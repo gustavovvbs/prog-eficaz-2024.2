@@ -1,0 +1,4 @@
+flask 
+web_pdb
+pyhthon-dotenv 
+mysql-connector-python
