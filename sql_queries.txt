@@ -1,0 +1,26 @@
+-- Tabela de usuários
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    cpf VARCHAR(11) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL UNIQUE
+);
+
+-- Tabela de livros
+CREATE TABLE livros (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    isbn VARCHAR(13) NOT NULL UNIQUE,
+    autor VARCHAR(100) NOT NULL
+);
+
+-- Tabela de empréstimos
+CREATE TABLE emprestimos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT,
+    livro_id INT,
+    data_emprestimo DATE NOT NULL,
+    data_devolucao DATE,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE,
+    FOREIGN KEY (livro_id) REFERENCES livros(id) ON DELETE CASCADE
+);
